@@ -1,24 +1,16 @@
-import { createFileRoute } from "@tanstack/react-router";
-
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
-export const Route = createFileRoute("/")({
-  component: Index,
-});
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
+import { createFileRoute, Link } from '@tanstack/react-router';
+import { ArrowUpRight, ArrowRight, CalendarDays, Settings, Lightbulb, MapPin, ShieldCheck, Handshake, PackageCheck, BadgeCheck, Check } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { WebsiteShell } from '@/components/site/website-shell';
+import { pageMeta } from '@/lib/company';
+import factory from '@/assets/factory.jpg';
+import automobile from '@/assets/automobile.jpg';
+import streetlights from '@/assets/streetlights.jpg';
+export const Route=createFileRoute('/')({head:()=>pageMeta('Automobile Parts & Street Light Manufacturing','Shakti Enterprise, Varanasi — powering mobility and illuminating cities with automobile spare parts and street light manufacturing since 2010.'),component:Index});
+function Index(){return <WebsiteShell>
+ <section className="hero"><img className="hero-image" src={factory} alt="Illustrative automobile component manufacturing workshop" width={1920} height={1024} fetchPriority="high"/><div className="container-shell hero-content"><div className="eyebrow">Shakti Enterprise · Established 2010</div><h1>Powering Mobility.<br/><span className="text-primary">Illuminating Cities.</span></h1><p className="hero-description">Your Trusted Partner in Automobile Spare Parts and Street Light Manufacturing Since 2010.</p><div className="hero-actions"><Button asChild size="lg"><Link to="/products">Explore Our Products <ArrowUpRight/></Link></Button><Button asChild variant="heroOutline" size="lg"><Link to="/contact">Contact Us for Bulk Orders <ArrowRight/></Link></Button></div><div className="hero-footnote"><ShieldCheck size={15}/><span>Rooted in Varanasi. Serving businesses across India.</span></div></div></section>
+ <section className="highlights" aria-label="Company highlights"><div className="container-shell highlight-grid">{[{icon:CalendarDays,title:'Established in 2010',text:'A legacy of dependable service'},{icon:Settings,title:'Automobile Spare Parts',text:'Keeping businesses moving'},{icon:Lightbulb,title:'Street Light Manufacturing',text:'Lighting the way forward'},{icon:MapPin,title:'Serving Businesses Across India',text:'From Varanasi, for your business'}].map(h=><div className="highlight" key={h.title}><h.icon/><div><strong>{h.title}</strong><small>{h.text}</small></div></div>)}</div></section>
+ <section className="section"><div className="container-shell"><div className="section-head"><div><div className="eyebrow">Two divisions. One commitment.</div><h2>Engineered for your everyday.</h2></div><p>From the parts that keep you moving to the lights that guide your way — solutions built around your business.</p></div><div className="division-grid"><article className="division-card"><div className="overflow-hidden"><img className="division-photo" src={automobile} alt="Illustrative automotive gears, bearings, brake disc and piston" width={1440} height={1024} loading="lazy"/></div><div className="division-body"><div className="division-label">01 / Mobility solutions</div><h3 className="mt-2">Automobile Spare Parts</h3><p>Dependable components for your replacement and supply requirements. Tell us what your vehicles and your business need.</p><div className="chips"><span className="chip">Engine Components</span><span className="chip">Bearings & Gears</span><span className="chip">Brake & Suspension</span></div><Button asChild variant="industrial" size="lg"><Link to="/automobile-parts">Explore Automobile Parts <ArrowUpRight/></Link></Button></div></article><article className="division-card"><div className="overflow-hidden"><img className="division-photo" src={streetlights} alt="Illustrative road illuminated by LED street lights" width={1440} height={1024} loading="lazy"/></div><div className="division-body"><div className="division-label">02 / Lighting solutions</div><h3 className="mt-2">Street Light Manufacturing</h3><p>Practical outdoor lighting for roads and public spaces. Discuss your project requirements and bulk lighting enquiries.</p><div className="chips"><span className="chip">LED Street Lights</span><span className="chip">Outdoor Lighting</span><span className="chip">Bulk Enquiries</span></div><Button asChild variant="industrial" size="lg"><Link to="/street-lights">Explore Street Lights <ArrowUpRight/></Link></Button></div></article></div><p className="text-muted-foreground text-[10px] mt-4">Illustrative photography and sample product categories. Actual inventory and specifications are confirmed upon enquiry.</p></div></section>
+ <section className="section section-muted"><div className="container-shell about-grid"><div><div className="eyebrow">Varanasi roots. Lasting relationships.</div><h2>More than 15 years.<br/>One enduring commitment.</h2><p className="body-copy">Since 2010, Shakti Enterprise has brought a customer-first approach to automobile spare parts and street light manufacturing.</p><p className="body-copy">We believe a strong business partnership is built on understanding your requirements, dependable products, and service you can count on.</p><div className="flex flex-wrap gap-x-6 gap-y-3 mt-6 text-xs font-medium"><span className="flex gap-2 items-center"><Check className="size-4 text-primary"/> Quality-focused approach</span><span className="flex gap-2 items-center"><Check className="size-4 text-primary"/> Business-first service</span></div><Button asChild variant="link" className="mt-5 px-0 text-foreground"><Link to="/about">Discover Our Story <ArrowUpRight/></Link></Button></div><div><img className="about-photo" src={factory} alt="Illustrative precision manufacturing equipment" width={1920} height={1024} loading="lazy"/><p className="text-[10px] text-muted-foreground mt-2">Illustrative manufacturing photography.</p></div></div></section>
+ <section className="section"><div className="container-shell"><div className="eyebrow">The Shakti advantage</div><h2>A partner you can depend on.</h2><div className="value-grid">{[{icon:BadgeCheck,title:'Experience that matters',text:'Serving the automobile and street lighting sectors since 2010.'},{icon:Settings,title:'Two specialized divisions',text:'Focused solutions for mobility and outdoor lighting needs.'},{icon:Handshake,title:'Customer-first service',text:'Your requirements guide every business conversation.'},{icon:PackageCheck,title:'Bulk enquiry support',text:'A direct line for wholesale quantities and project requirements.'}].map(v=><div className="value-item" key={v.title}><v.icon/><h3>{v.title}</h3><p>{v.text}</p></div>)}</div></div></section>
+ </WebsiteShell>}
